@@ -1,8 +1,27 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "normalize.css";
+import "@/styles/global.css";
+import type { AppProps } from "next/app";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        <title>swag</title>
+      </Head>
+      <div
+        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+      >
+        <Header />
+        <div style={{ flex: 1 }}>
+          <Component {...pageProps} />
+        </div>
+        <Footer />
+      </div>
+    </>
+  );
 }
 
-export default MyApp
+export default MyApp;
