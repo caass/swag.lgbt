@@ -7,7 +7,7 @@ const workersImageLoader: ImageLoader = ({ src, width, quality }) => {
     quality = 75;
   }
 
-  return `https:/api.swag.lgbt/resize-image?width=${width}&quality=${quality}&image=https://swag.lgbt${src}`;
+  return `https://swag.lgbt/api/resize-image?width=${width}&quality=${quality}&image=https://swag.lgbt${src}`;
 };
 
 export const Image: FunctionComponent<
