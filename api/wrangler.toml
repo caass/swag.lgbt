@@ -1,5 +1,0 @@
-compatibility_date = "2022-04-15"
-main               = "src/index.ts"
-name               = "swag-lgbt-api"
-
-routes = ["api.swag.lgbt/*"]

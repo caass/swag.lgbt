@@ -2,10 +2,20 @@
   "root": true,
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "next/core-web-vitals",
+    "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["@typescript-eslint", "unused-imports"],
+  "plugins": ["@typescript-eslint", "unused-imports", "jsx-a11y", "import"],
   "rules": {
-    "@typescript-eslint/consistent-type-imports": ["error"]
+    "@typescript-eslint/consistent-type-imports": ["error"],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "controlComponents": ["Field"],
+        "depth": 3
+      }
+    ],
+    "import/order": ["error"]
   }
 }

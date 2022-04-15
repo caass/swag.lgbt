@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { Router } from "itty-router";
 import { resizeImage } from "./resize-image";
 

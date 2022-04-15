@@ -1,6 +1,6 @@
-import { Image } from "components/image";
 import type { FunctionComponent } from "react";
 import styles from "./header.module.css";
+import { Image } from "components/image";
 import sparklyFlag from "public/sparkly-flag.gif";
 
 const Flag: FunctionComponent = () => (

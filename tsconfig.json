@@ -10,7 +10,19 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "incremental": true
+    "incremental": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "preserve",
+    "baseUrl": "./src/",
+    "types": ["@cloudflare/workers-types"],
+    "paths": {
+      "components/*": ["components/*"],
+      "public/*": ["public/*"],
+      "styles/*": ["styles/*"],
+      "util/*": ["util/*"]
+    }
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }
