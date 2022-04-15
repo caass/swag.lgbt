@@ -15,7 +15,6 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "preserve",
     "baseUrl": "./src/",
-    "types": ["@cloudflare/workers-types"],
     "paths": {
       "components/*": ["components/*"],
       "public/*": ["public/*"],
