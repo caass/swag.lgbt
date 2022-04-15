@@ -41,6 +41,6 @@ const resizeImage = async ({
   );
 };
 
-export const onRequest: PagesFunction = ({ request }) => {
+export const onRequest: PagesFunction = async ({ request }) => {
   return resizeImage(request);
 };
