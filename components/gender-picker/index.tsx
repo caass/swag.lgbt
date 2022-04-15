@@ -1,7 +1,7 @@
 import type { FunctionComponent, ComponentPropsWithRef } from "react";
 import type { FieldRenderProps } from "react-final-form";
 import { Field } from "react-final-form";
-import { titleCase } from "@/util/titleCase";
+import { titleCase } from "util/titleCase";
 import { Alignment } from "./alignment";
 import { ColorPicker } from "./color-picker";
 import { StarChart } from "./star-chart";

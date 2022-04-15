@@ -1,7 +1,7 @@
 import type { FunctionComponent } from "react";
 import styles from "./footer.module.css";
 import Image from "next/image";
-import smiles from "@/public/smiles.gif";
+import smiles from "public/smiles.gif";
 
 export const Footer: FunctionComponent = () => {
   return (

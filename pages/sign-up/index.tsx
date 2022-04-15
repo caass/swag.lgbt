@@ -1,4 +1,4 @@
-import { GenderPicker } from "@/components/gender-picker";
+import { GenderPicker } from "components/gender-picker";
 import type { NextPage } from "next";
 import { useState } from "react";
 import { Field, Form } from "react-final-form";

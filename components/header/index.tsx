@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { FunctionComponent } from "react";
 import styles from "./header.module.css";
-import sparklyFlag from "@/public/sparkly-flag.webp";
+import sparklyFlag from "public/sparkly-flag.gif";
 
 const Flag: FunctionComponent = () => (
   <Image src={sparklyFlag} alt="" layout="fixed" width="99px" height="56px" />
