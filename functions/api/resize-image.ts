@@ -14,7 +14,7 @@ function getImageParam<T extends keyof RequestInitCfPropertiesImage>(
   return value as RequestInitCfPropertiesImage[typeof property];
 }
 
-export const resizeImage = async ({
+const resizeImage = async ({
   url: urlstring,
   headers,
 }: Request): Promise<Response> => {
@@ -39,4 +39,8 @@ export const resizeImage = async ({
       },
     }
   );
+};
+
+export const onRequest: PagesFunction = ({ request }) => {
+  return resizeImage(request);
 };
