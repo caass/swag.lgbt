@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>swag</title>
+        <title>swag dot lgbt</title>
       </Head>
       <div
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
