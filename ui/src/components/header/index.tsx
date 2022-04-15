@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "components/image";
 import type { FunctionComponent } from "react";
 import styles from "./header.module.css";
 import sparklyFlag from "public/sparkly-flag.gif";

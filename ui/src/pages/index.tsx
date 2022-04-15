@@ -1,6 +1,6 @@
-import { LinkList } from "components/link-list";
 import type { NextPage } from "next";
 import styles from "./index.module.css";
+import { LinkList } from "components/link-list";
 
 const Home: NextPage = () => {
   return (

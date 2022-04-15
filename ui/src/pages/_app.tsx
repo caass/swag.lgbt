@@ -1,9 +1,9 @@
 import "normalize.css";
 import "styles/global.css";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { Footer } from "components/footer";
 import { Header } from "components/header";
-import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

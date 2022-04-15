@@ -1,11 +1,11 @@
 import type { FunctionComponent, ComponentPropsWithRef } from "react";
 import type { FieldRenderProps } from "react-final-form";
 import { Field } from "react-final-form";
-import { titleCase } from "util/titleCase";
 import { Alignment } from "./alignment";
 import { ColorPicker } from "./color-picker";
 import { StarChart } from "./star-chart";
 import styles from "./gender-picker.module.css";
+import { titleCase } from "util/titleCase";
 
 /**
  * A beginner-level gender picker, for cisgender people or particularly dense
