@@ -5,7 +5,7 @@ type TwilioCredentials = {
   TWILIO_AUTH_TOKEN: string;
 };
 
-export const onPost: PagesFunction<TwilioCredentials> = async ({
+export const onRequestPost: PagesFunction<TwilioCredentials> = async ({
   request,
   env,
 }) => {
