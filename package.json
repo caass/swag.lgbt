@@ -13,9 +13,9 @@
     "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
-    "fmt": "prettier --write .",
-    "fmt.check": "prettier --check .",
-    "lint": "eslint \"src/**/*.ts*\"",
+    "fmt": "prettier --ignore-path .gitignore --write .",
+    "fmt.check": "prettier --ignore-path .gitignore --check .",
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.ts*\"",
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open --mode ssr",
     "qwik": "qwik"
