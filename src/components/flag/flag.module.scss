@@ -1,0 +1,54 @@
+@use "flags";
+
+/// Adds column gradients to a specified flag.
+@mixin columns($name, $columns...) {
+  &.#{$name} {
+    // mono-block flags are easy :)
+    @if length($columns) == 1 {
+      .column {
+        background: nth($columns, 1);
+      }
+    } @else if length($columns) == 15 {
+      @for $i from 0 to length($columns) {
+        .column-#{$i} {
+          background: nth($columns, $i + 1);
+        }
+      }
+    } @else {
+      @error "$columns must be either 1 or 15 items";
+    }
+  }
+}
+
+.flag {
+  display: flex;
+  aspect-ratio: 3 / 2;
+
+  @include columns("pan", flags.$pan);
+}
+
+.column {
+  flex: 1;
+  min-width: 20px;
+
+  animation: oscillate 500ms infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: backwards;
+}
+
+@for $i from 0 to 15 {
+  .column-#{$i} {
+    animation-delay: #{$i * 100}ms;
+  }
+}
+
+@keyframes oscillate {
+  from {
+    transform: translateY(8px);
+  }
+
+  to {
+    transform: translateY(-8px);
+  }
+}
