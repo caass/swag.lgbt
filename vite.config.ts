@@ -7,10 +7,12 @@ import { qwikCity } from "@builder.io/qwik-city/vite";
 import autoprefixer from "autoprefixer";
 import cssnanoPlugin from "cssnano";
 import postcssPrefixEnv from "postcss-preset-env";
-import scss from "postcss-scss";
+import postcssScss from "postcss-scss";
+import atImport from "postcss-import";
 
 const defineCssConfig = ({ command }: ConfigEnv): CSSOptions => {
   const postcssPlugins = [
+    atImport(),
     autoprefixer(),
     postcssPrefixEnv({ stage: 3, features: { "nesting-rules": true } }),
   ];
@@ -22,7 +24,7 @@ const defineCssConfig = ({ command }: ConfigEnv): CSSOptions => {
 
   return {
     postcss: {
-      parser: scss.parse,
+      parser: postcssScss.parse,
       plugins: postcssPlugins,
     },
   };

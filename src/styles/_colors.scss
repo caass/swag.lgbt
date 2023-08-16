@@ -1,0 +1,30 @@
+$background-color-dark: #2d2d2d;
+$background-color-light: #eeeeee;
+
+@mixin color-scheme($schemes...) {
+  @for $i from 0 to length($schemes) {
+    $scheme: nth($schemes, $i + 1);
+
+    @media (prefers-color-scheme: $scheme) {
+      @content;
+    }
+  }
+
+  $scheme-name: nth($schemes, 1);
+
+  .#{$scheme-name}-override {
+    @content;
+  }
+}
+
+@mixin light() {
+  @include color-scheme(light, no-preference) {
+    @content;
+  }
+}
+
+@mixin dark() {
+  @include color-scheme(dark) {
+    @content;
+  }
+}

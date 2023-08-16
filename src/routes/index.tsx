@@ -1,22 +1,29 @@
-import { component$, useTask$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { component$ } from "@builder.io/qwik";
+import { Link, type DocumentHead } from "@builder.io/qwik-city";
 
-const Blah = () => {
-  const b = useTask$(() => {
-    "hello";
-  });
-};
+import styles from "./index.module.scss";
 
 export default component$(() => {
   return (
-    <>
-      <h1>Hi 👋</h1>
-      <p>
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
-      </p>
-    </>
+    <div class={styles.home}>
+      <header>
+        <h1>Welcome to swag dot lgbt</h1>
+        <h2>This is my website</h2>
+      </header>
+      <main>
+        <ul>
+          <li>
+            <Link href="/blog">blog</Link>
+          </li>
+          <li>
+            <Link href="https://tumblr.swag.lgbt">tumblr</Link>
+          </li>
+          <li>
+            <Link href="/about">about</Link>
+          </li>
+        </ul>
+      </main>
+    </div>
   );
 });
 
