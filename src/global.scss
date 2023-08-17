@@ -23,6 +23,20 @@ html {
 body {
   padding: 0;
   margin: 0;
+
+  @include colors.light {
+    background-color: colors.$background-color-light;
+  }
+
+  @include colors.dark {
+    background-color: colors.$background-color-dark;
+  }
+}
+
+* {
+  @include colors.dark {
+    color: #e1e1e1;
+  }
 }
 
 main {

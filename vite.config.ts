@@ -9,6 +9,7 @@ import cssnanoPlugin from "cssnano";
 import postcssPrefixEnv from "postcss-preset-env";
 import postcssScss from "postcss-scss";
 import atImport from "postcss-import";
+import { type LegacyStringOptions } from "sass";
 
 const defineCssConfig = ({ command }: ConfigEnv): CSSOptions => {
   const postcssPlugins = [
@@ -22,11 +23,15 @@ const defineCssConfig = ({ command }: ConfigEnv): CSSOptions => {
     postcssPlugins.push(cssnanoPlugin({ preset: "default" }));
   }
 
+  // this is irritating to rebuild every time so. i'm leaving it.
+  const scssOptions: Omit<LegacyStringOptions<"sync">, "data"> = {};
+
   return {
     postcss: {
       parser: postcssScss.parse,
       plugins: postcssPlugins,
     },
+    preprocessorOptions: { scss: scssOptions },
   };
 };
 

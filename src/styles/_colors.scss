@@ -1,5 +1,5 @@
-$background-color-dark: #2d2d2d;
-$background-color-light: #eeeeee;
+$background-color-dark: #1f1f1f;
+$background-color-light: #efefef;
 
 @mixin color-scheme($schemes...) {
   @for $i from 0 to length($schemes) {
