@@ -2,7 +2,7 @@ import { type QwikIntrinsicElements, component$ } from "@builder.io/qwik";
 
 import styles from "./flag.module.scss";
 
-export const FLAGS = ["progress-pride", "pan"] as const;
+export const FLAGS = ["progress-pride", "trans", "pan"] as const;
 
 export type FlagProps = {
   kind: (typeof FLAGS)[number];

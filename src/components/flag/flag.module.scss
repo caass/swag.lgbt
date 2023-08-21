@@ -28,6 +28,8 @@
   @include flag("pan", flags.$pan);
 
   @include flag("progress-pride", flags.$progress-pride);
+
+  @include flag("trans", flags.$trans)
 }
 
 .column {
