@@ -48,5 +48,8 @@ module.exports = {
 
     "import/no-extraneous-dependencies": "error",
     "import/consistent-type-specifier-style": ["warn", "prefer-inline"],
+    "import/order": ["warn", {
+      groups: []
+    }]
   },
 };
