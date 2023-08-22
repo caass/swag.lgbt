@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { Link, type DocumentHead } from "@builder.io/qwik-city";
+import { type DocumentHead } from "@builder.io/qwik-city";
 
 import styles from "./index.module.scss";
 import Flag from "~/components/flag/flag";
@@ -14,10 +14,10 @@ export default component$(() => {
         <Flag class={styles.flag} />
         <ul class={styles.links}>
           <li>
-            <Link href="/about">about</Link>
+            <a href="/about">about</a>
           </li>
           <li>
-            <Link href="/blog">blog</Link>
+            <a href="/blog">blog</a>
           </li>
         </ul>
       </main>
