@@ -17,7 +17,7 @@ export default component$(() => {
             <Link href="/about">about</Link>
           </li>
           <li>
-            <Link href="blog">blog</Link>
+            <Link href="/blog">blog</Link>
           </li>
         </ul>
       </main>
@@ -30,7 +30,7 @@ export const head: DocumentHead = {
   meta: [
     {
       name: "description",
-      content: "this is my homepage",
+      content: "swag dot lgbt",
     },
   ],
 };
