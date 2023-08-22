@@ -9,6 +9,7 @@ import { RouterHead } from "./components/router-head/router-head";
 import "@fontsource/vt323";
 
 import "./global.scss";
+import FlagProvider from "./components/flag-provider/flag-provider";
 
 export default component$(() => {
   /**
@@ -26,7 +27,9 @@ export default component$(() => {
         <RouterHead />
       </head>
       <body lang="en">
-        <RouterOutlet />
+        <FlagProvider>
+          <RouterOutlet />
+        </FlagProvider>
         <ServiceWorkerRegister />
       </body>
     </QwikCityProvider>

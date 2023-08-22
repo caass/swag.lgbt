@@ -1,18 +1,22 @@
 @use "flags";
 
+$animation-duration: 500ms;
+$animation-delay: 100ms;
+$wave-height: 0.5rem;
+
 /// Adds column gradients to a specified flag.
 @mixin flag($name, $palette) {
   &.#{$name} {
     @if length($palette) == 1 {
-      // mono-block flags, same palette throughout
       .column {
         background: nth($palette, 1);
       }
     } @else if length($palette) == 18 {
       @for $i from 0 to length($palette) {
-        // flags with an ounce of creativity that aren't just bars
-        .column-#{$i} {
-          background: nth($palette, $i + 1);
+        .column {
+          &:nth-of-type(#{$i + 1}) {
+            background: nth($palette, $i + 1);
+          }
         }
       }
     } @else {
@@ -24,36 +28,36 @@
 .flag {
   display: flex;
   aspect-ratio: 3 / 2;
-
-  @include flag("pan", flags.$pan);
+  cursor: pointer;
 
   @include flag("progress-pride", flags.$progress-pride);
 
-  @include flag("trans", flags.$trans)
+  @include flag("trans", flags.$trans);
+
+  @include flag("lesbian", flags.$lesbian);
 }
 
 .column {
   flex: 1;
-  min-width: 20px;
 
-  animation: oscillate 500ms infinite;
+  animation: oscillate $animation-duration infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
   animation-fill-mode: backwards;
-}
 
-@for $i from 0 to 18 {
-  .column-#{$i} {
-    animation-delay: #{$i * 100}ms;
+  @for $i from 0 to 18 {
+    &:nth-of-type(#{$i + 1}) {
+      animation-delay: -1 * (17 - $i) * $animation-delay;
+    }
   }
 }
 
 @keyframes oscillate {
   from {
-    transform: translateY(8px);
+    transform: translateY($wave-height);
   }
 
   to {
-    transform: translateY(-8px);
+    transform: translateY(-$wave-height);
   }
 }
