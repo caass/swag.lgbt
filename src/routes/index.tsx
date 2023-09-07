@@ -14,10 +14,10 @@ export default component$(() => {
         <Flag class={styles.flag} />
         <ul class={styles.links}>
           <li>
-            <a href="/about">about</a>
+            <a href="https://tumblr.swag.lgbt">tumblr</a>
           </li>
           <li>
-            <a href="/blog">blog</a>
+            <a href="https://github.com/caass/">github</a>
           </li>
         </ul>
       </main>
