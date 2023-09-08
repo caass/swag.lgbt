@@ -50,6 +50,7 @@ module.exports = {
     "import/consistent-type-specifier-style": ["warn", "prefer-inline"],
     "import/order": ["warn", {
       groups: []
-    }]
+    }],
+    "import/no-unresolved": ["warn", { ignore: ["@qwik-city-plan", "@qwik-client-manifest"]}]
   },
 };
