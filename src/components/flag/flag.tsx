@@ -20,7 +20,7 @@ const progressPrideDescription = `An animated pixel-art intersex-inclusive progr
 
 The horizontal stripes from the Rainbow Flag represent, from top to bottom: Life, Healing, Sunlight, Nature, Serenity, and Spirit.
 
-The diagonal stripes black and brown stripes from the Philadelphia Rainbow Flag represent, from right to left, Black people and their inclusion and those that have been lost to AIDS, and Brown people and their inclusion.
+The diagonal black and brown stripes from the Philadelphia Rainbow Flag represent, from right to left, Black people and their inclusion and those that have been lost to AIDS, and Brown people and their inclusion.
 
 The three diagonal stripes to left from the Transgender Pride flag represent, from right to left, the traditional color for baby boys, the traditional color for baby girls, and people who are transitioning or non-binary.
 
@@ -28,11 +28,7 @@ The purple circle set on a yellow field from the Intersex Pride flag represents 
 
 const transPrideDescription = `An animated pixel-art transgender pride flag.
 
-The blue stripes symbolize the traditional color for baby boys.
-
-The pink stripes symbolize the traditional color for baby girls.
-
-The central white stripe represents those who are transitioning or are agender or otherwise non-binary.`;
+The blue stripes symbolize the traditional color for baby boys. The pink stripes symbolize the traditional color for baby girls. The central white stripe represents those who are transitioning or are agender or otherwise non-binary.`;
 
 export type FlagName = (typeof FLAGS)[number];
 
