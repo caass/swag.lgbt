@@ -8,9 +8,7 @@ import {
 } from "@builder.io/qwik";
 import { type FlagName } from "~/components/flag/flag";
 
-export const FlagContext = createContextId<Signal<FlagName>>(
-  "lgbt.swag.flag-context"
-);
+export const FlagContext = createContextId<Signal<FlagName>>("lgbt.swag.flag");
 
 type FlagProviderProps = {
   default?: FlagName;
