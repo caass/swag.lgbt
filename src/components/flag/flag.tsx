@@ -15,6 +15,10 @@ const NUM_COLUMNS = 18;
 
 export type FlagName = (typeof FLAGS)[number];
 
+export const isFlagName = (name: string): name is FlagName => {
+  return name === "progress-pride" || name === "lesbian" || name === "trans";
+};
+
 type FlagProps = Omit<QwikIntrinsicElements["div"], "onClick$">;
 
 export default component$(({ class: classes, ...props }: FlagProps) => {

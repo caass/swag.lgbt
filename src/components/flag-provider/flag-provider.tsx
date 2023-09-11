@@ -2,20 +2,19 @@ import {
   type Signal,
   component$,
   useContextProvider,
-  useSignal,
   Slot,
   createContextId,
 } from "@builder.io/qwik";
 import { type FlagName } from "~/components/flag/flag";
+import { useFlagCookie, useFlagLoader } from "~/routes/layout";
 
-export const FlagContext = createContextId<Signal<FlagName>>("lgbt.swag.flag");
+export const FLAG_CONTEXT_NAME = "lgbt.swag.flag-kind";
 
-type FlagProviderProps = {
-  default?: FlagName;
-};
+export const FlagContext = createContextId<Signal<FlagName>>(FLAG_CONTEXT_NAME);
 
-export default component$((props: FlagProviderProps) => {
-  useContextProvider(FlagContext, useSignal(props.default ?? "progress-pride"));
+export default component$(() => {
+  const flag = useFlagCookie(useFlagLoader);
+  useContextProvider(FlagContext, flag);
 
   return <Slot />;
 });

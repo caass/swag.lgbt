@@ -1,5 +1,8 @@
 import { component$, Slot } from "@builder.io/qwik";
-import { type RequestHandler } from "@builder.io/qwik-city";
+import { routeLoader$, type RequestHandler } from "@builder.io/qwik-city";
+import { FLAG_CONTEXT_NAME } from "~/components/flag-provider/flag-provider";
+import { type FlagName } from "~/components/flag/flag";
+import { cookie } from "~/hooks/cookie";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -15,3 +18,11 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 export default component$(() => {
   return <Slot />;
 });
+
+const [flagCookieLoader, useFlagHook] = cookie<FlagName>(
+  FLAG_CONTEXT_NAME,
+  "progress-pride"
+);
+
+export const useFlagLoader = routeLoader$((event) => flagCookieLoader(event));
+export const useFlagCookie = useFlagHook;
