@@ -7,7 +7,7 @@ import { qwikCity } from "@builder.io/qwik-city/vite";
 import autoprefixer from "autoprefixer";
 import cssnanoPlugin from "cssnano";
 import postcssPrefixEnv from "postcss-preset-env";
-import postcssScss from "postcss-scss";
+import { parse as scssParser } from "postcss-scss";
 import atImport from "postcss-import";
 import { type LegacyStringOptions } from "sass";
 
@@ -24,14 +24,16 @@ const defineCssConfig = ({ command }: ConfigEnv): CSSOptions => {
   }
 
   // this is irritating to rebuild every time so. i'm leaving it.
-  const scssOptions: Omit<LegacyStringOptions<"sync">, "data"> = {};
+  const preprocessorOptions: {
+    scss: Omit<LegacyStringOptions<"sync">, "data">;
+  } = { scss: {} };
 
   return {
     postcss: {
-      parser: postcssScss.parse,
+      parser: scssParser,
       plugins: postcssPlugins,
     },
-    preprocessorOptions: { scss: scssOptions },
+    preprocessorOptions,
   };
 };
 
