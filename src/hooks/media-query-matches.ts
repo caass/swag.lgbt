@@ -23,7 +23,7 @@ import {
  */
 export const useMediaQueryMatches = (
   query: string,
-  opts?: { default?: boolean; strategy?: VisibleTaskStrategy }
+  opts?: { default?: boolean; strategy?: VisibleTaskStrategy },
 ): Signal<boolean> => {
   const mediaQueryMatches = useSignal(opts?.default ?? false);
 
@@ -35,7 +35,7 @@ export const useMediaQueryMatches = (
         mediaQueryMatches.value = event.matches;
       };
     },
-    { strategy: opts?.strategy }
+    { strategy: opts?.strategy },
   );
 
   return mediaQueryMatches;

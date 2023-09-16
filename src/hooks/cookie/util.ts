@@ -23,11 +23,7 @@ function tryDecodeUriComponent(str: string) {
   }
 }
 
-const createSetCookieValue = (
-  cookieName: string,
-  cookieValue: string,
-  options: CookieOptions
-) => {
+const createSetCookieValue = (cookieName: string, cookieValue: string, options: CookieOptions) => {
   const c = [`${cookieName}=${cookieValue}`];
 
   if (typeof options.domain === "string") {
@@ -39,10 +35,7 @@ const createSetCookieValue = (
     c.push(`Max-Age=${options.maxAge}`);
   } else if (Array.isArray(options.maxAge)) {
     c.push(`Max-Age=${options.maxAge[0] * UNIT[options.maxAge[1]]}`);
-  } else if (
-    typeof options.expires === "number" ||
-    typeof options.expires == "string"
-  ) {
+  } else if (typeof options.expires === "number" || typeof options.expires == "string") {
     c.push(`Expires=${options.expires}`);
   } else if (options.expires instanceof Date) {
     c.push(`Expires=${options.expires.toUTCString()}`);
@@ -70,11 +63,7 @@ const createSetCookieValue = (
 
 export const setCookie =
   (document: Document) =>
-  (
-    name: string,
-    value: string | number | Record<string, unknown>,
-    options?: CookieOptions
-  ) => {
+  (name: string, value: string | number | Record<string, unknown>, options?: CookieOptions) => {
     const serializedValue =
       typeof value === "string"
         ? value
@@ -82,16 +71,10 @@ export const setCookie =
         ? value.toString()
         : JSON.stringify(value);
 
-    document.cookie = createSetCookieValue(
-      name,
-      serializedValue,
-      options ?? {}
-    );
+    document.cookie = createSetCookieValue(name, serializedValue, options ?? {});
   };
 
-function resolveSameSite(
-  sameSite: boolean | "strict" | "lax" | "none" | undefined
-) {
+function resolveSameSite(sameSite: boolean | "strict" | "lax" | "none" | undefined) {
   if (sameSite === true) {
     return "Strict";
   }
@@ -111,11 +94,8 @@ export const parseCookieString = (cookieString: string | undefined | null) => {
     for (const cookieSegment of cookieSegments) {
       const separatorIndex = cookieSegment.indexOf("=");
       if (separatorIndex !== -1) {
-        cookie[
-          tryDecodeUriComponent(cookieSegment.slice(0, separatorIndex).trim())
-        ] = tryDecodeUriComponent(
-          cookieSegment.slice(separatorIndex + 1).trim()
-        );
+        cookie[tryDecodeUriComponent(cookieSegment.slice(0, separatorIndex).trim())] =
+          tryDecodeUriComponent(cookieSegment.slice(separatorIndex + 1).trim());
       }
     }
   }

@@ -11,7 +11,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:qwik/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
   ],
   settings: {
     "import/resolver": {
@@ -48,9 +48,12 @@ module.exports = {
 
     "import/no-extraneous-dependencies": "error",
     "import/consistent-type-specifier-style": ["warn", "prefer-inline"],
-    "import/order": ["warn", {
-      groups: []
-    }],
-    "import/no-unresolved": ["warn", { ignore: ["@qwik-city-plan", "@qwik-client-manifest"]}]
+    "import/order": [
+      "warn",
+      {
+        groups: [],
+      },
+    ],
+    "import/no-unresolved": ["warn", { ignore: ["@qwik-city-plan", "@qwik-client-manifest"] }],
   },
 };

@@ -1,14 +1,5 @@
-import {
-  type Signal,
-  useSignal,
-  useTask$,
-  useVisibleTask$,
-} from "@builder.io/qwik";
-import {
-  type Loader,
-  type CookieOptions,
-  type RequestEventLoader,
-} from "@builder.io/qwik-city";
+import { type Signal, useSignal, useTask$, useVisibleTask$ } from "@builder.io/qwik";
+import { type Loader, type CookieOptions, type RequestEventLoader } from "@builder.io/qwik-city";
 import { isBrowser } from "@builder.io/qwik/build";
 import { parseCookieString, setCookie } from "./util";
 
@@ -35,9 +26,11 @@ function createCookieLoader<
   };
 }
 
-function useCookiePersistence<
-  T extends string | number | Record<string, unknown>,
->(name: string, value: Signal<T>, options?: CookieOptions) {
+function useCookiePersistence<T extends string | number | Record<string, unknown>>(
+  name: string,
+  value: Signal<T>,
+  options?: CookieOptions,
+) {
   const hasInitialized = useSignal(false);
 
   // we register this first to have it run before the lower task so it can
@@ -64,7 +57,7 @@ function useCookiePersistence<
     },
     {
       strategy: "document-idle",
-    }
+    },
   );
 
   // this will run before the above task since `useTask$` executes before `useVisibleTask$`
@@ -84,7 +77,7 @@ function useCookiePersistence<
 export function cookie<T extends string, PLATFORM = QwikCityPlatform>(
   name: string,
   defaultValue: T,
-  options?: CookieOptions
+  options?: CookieOptions,
 ): {
   cookieLoader: (requestEvent: RequestEventLoader<PLATFORM>) => T;
   createCookieHook(cookieLoader: Loader<T>): () => Signal<T>;
@@ -92,18 +85,15 @@ export function cookie<T extends string, PLATFORM = QwikCityPlatform>(
 export function cookie<T extends number, PLATFORM = QwikCityPlatform>(
   name: string,
   defaultValue: T,
-  options?: CookieOptions
+  options?: CookieOptions,
 ): {
   cookieLoader: (requestEvent: RequestEventLoader<PLATFORM>) => T;
   createCookieHook(cookieLoader: Loader<T>): () => Signal<T>;
 };
-export function cookie<
-  T extends Record<string, unknown>,
-  PLATFORM = QwikCityPlatform,
->(
+export function cookie<T extends Record<string, unknown>, PLATFORM = QwikCityPlatform>(
   name: string,
   defaultValue: T,
-  options?: CookieOptions
+  options?: CookieOptions,
 ): {
   cookieLoader: (requestEvent: RequestEventLoader<PLATFORM>) => T;
   createCookieHook(cookieLoader: Loader<T>): () => Signal<T>;
@@ -114,7 +104,7 @@ export function cookie<
 >(
   name: string,
   defaultValue: T,
-  options?: CookieOptions
+  options?: CookieOptions,
 ): {
   cookieLoader: (requestEvent: RequestEventLoader<PLATFORM>) => T;
   createCookieHook(cookieLoader: Loader<T>): () => Signal<T>;
@@ -130,11 +120,7 @@ export function cookie<
     return useCookie;
   };
 
-  const cookieLoader = createCookieLoader<T, PLATFORM>(
-    name,
-    defaultValue,
-    options
-  );
+  const cookieLoader = createCookieLoader<T, PLATFORM>(name, defaultValue, options);
 
   return {
     cookieLoader,

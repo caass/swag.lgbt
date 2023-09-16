@@ -1,9 +1,4 @@
-import {
-  type QwikIntrinsicElements,
-  component$,
-  useContext,
-  useComputed$,
-} from "@builder.io/qwik";
+import { type QwikIntrinsicElements, component$, useContext, useComputed$ } from "@builder.io/qwik";
 
 import { FlagContext } from "~/components/flag-provider/flag-provider";
 

@@ -1,9 +1,4 @@
-import {
-  type Signal,
-  useSignal,
-  useVisibleTask$,
-  useTask$,
-} from "@builder.io/qwik";
+import { type Signal, useSignal, useVisibleTask$, useTask$ } from "@builder.io/qwik";
 import { isBrowser } from "@builder.io/qwik/build";
 
 /**
@@ -35,7 +30,7 @@ export const useLocalStorage = (key: string, value: Signal<string>) => {
     {
       // execute eagerly, on document load
       strategy: "document-ready",
-    }
+    },
   );
 
   // this will run before the above task since `useTask$` executes before `useVisibleTask$`
