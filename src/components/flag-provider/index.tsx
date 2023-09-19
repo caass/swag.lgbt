@@ -5,14 +5,14 @@ import {
   Slot,
   createContextId,
 } from "@builder.io/qwik";
-import { type FlagName } from "~/components/flag/flag";
+import { type FlagName } from "~/components/flag";
 import { useFlagCookie } from "~/routes/layout";
 
 export const FLAG_CONTEXT_NAME = "lgbt.swag.flag-kind";
 
 export const FlagContext = createContextId<Signal<FlagName>>(FLAG_CONTEXT_NAME);
 
-export default component$(() => {
+export const FlagProvider = component$(() => {
   const flag = useFlagCookie();
   useContextProvider(FlagContext, flag);
 

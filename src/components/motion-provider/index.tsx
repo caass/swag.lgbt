@@ -9,7 +9,7 @@ import { useMediaQueryMatches } from "~/hooks/media-query-matches";
 
 export const MotionContext = createContextId<Signal<boolean>>("lgbt.swag.prefers-reduced-motion");
 
-export default component$(() => {
+export const MotionProvider = component$(() => {
   const prefersReducedMotion = useMediaQueryMatches("(prefers-reduced-motion: reduce)");
 
   useContextProvider(MotionContext, prefersReducedMotion);

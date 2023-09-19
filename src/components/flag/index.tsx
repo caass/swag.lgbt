@@ -1,6 +1,6 @@
 import { type QwikIntrinsicElements, component$, useContext, useComputed$ } from "@builder.io/qwik";
 
-import { FlagContext } from "~/components/flag-provider/flag-provider";
+import { FlagContext } from "~/components/flag-provider";
 
 import styles from "./flag.module.scss";
 import flags from "./flags.json";
@@ -16,7 +16,7 @@ export const isFlagName = (name: string): name is FlagName => {
 
 type FlagProps = Omit<QwikIntrinsicElements["div"], "onClick$">;
 
-export default component$(({ class: classes, ...props }: FlagProps) => {
+export const Flag = component$(({ class: classes, ...props }: FlagProps) => {
   const columns = [...new Array(NUM_COLUMNS).keys()];
   const flag = useContext(FlagContext);
   const titleText = useComputed$(() => {

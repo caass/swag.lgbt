@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
 
 import styles from "./index.module.scss";
-import Flag from "~/components/flag/flag";
+import { Flag } from "~/components/flag";
 
 export default component$(() => {
   return (
