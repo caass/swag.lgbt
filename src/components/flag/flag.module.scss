@@ -2,7 +2,7 @@
 
 $animation-duration: 500ms;
 $animation-delay: 100ms;
-$wave-height: 0.5rem;
+$wave-height: 3%;
 
 /// Adds column gradients to a specified flag.
 @mixin flag($name, $palette) {
