@@ -28,7 +28,6 @@ $wave-height: 3%;
 .flag {
   display: flex;
   aspect-ratio: 3 / 2;
-  cursor: pointer;
 
   @include flag("progress-pride", flags.$progress-pride);
 

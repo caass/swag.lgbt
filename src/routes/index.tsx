@@ -11,7 +11,7 @@ export default component$(() => {
         <h1>Welcome to swag dot lgbt</h1>
       </header>
       <main>
-        <Flag class={styles.flag} />
+        <Flag class={styles.flag} cycleOnClick displayAltText />
         <ul class={styles.links}>
           <li>
             <a href="https://tumblr.swag.lgbt">tumblr</a>

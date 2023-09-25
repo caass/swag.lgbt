@@ -7,7 +7,7 @@ type StorybookFlagProps = FlagProps & { flag: FlagName };
 
 const meta: Meta<StorybookFlagProps> = {
   component: Flag,
-  args: { flag: "lesbian" },
+  args: { flag: "lesbian", cycleOnClick: false, displayAltText: false },
   argTypes: {
     flag: {
       options: ["lesbian", "progress-pride", "trans"] as FlagName[],
@@ -25,28 +25,28 @@ const StorybookFlagProvider = component$(({ flag }: { flag: FlagName }) => {
   return <Slot />;
 });
 
-const SmallFlag = component$(({ flag }: { flag: FlagName }) => {
+const SmallFlag = component$<StorybookFlagProps>(({ flag, ...props }) => {
   useStyles$(`.flag { width: 90px }`);
   return (
     <StorybookFlagProvider flag={flag}>
-      <Flag class="flag" />
+      <Flag class="flag" {...props} />
     </StorybookFlagProvider>
   );
 });
 
 export const Small: Story = {
-  render: ({ flag }) => <SmallFlag flag={flag} />,
+  render: (props) => <SmallFlag {...props} />,
 };
 
-const LargeFlag = component$(({ flag }: { flag: FlagName }) => {
+const LargeFlag = component$<StorybookFlagProps>(({ flag, ...props }) => {
   useStyles$(`.flag { width: 450px }`);
   return (
     <StorybookFlagProvider flag={flag}>
-      <Flag class="flag" />
+      <Flag class="flag" {...props} />
     </StorybookFlagProvider>
   );
 });
 
 export const Large: Story = {
-  render: ({ flag }) => <LargeFlag flag={flag} />,
+  render: (props) => <LargeFlag {...props} />,
 };
