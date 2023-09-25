@@ -14,7 +14,7 @@ export const isFlagName = (name: string): name is FlagName => {
   return name === "progress-pride" || name === "lesbian" || name === "trans";
 };
 
-type FlagProps = Omit<QwikIntrinsicElements["div"], "onClick$">;
+export type FlagProps = Omit<QwikIntrinsicElements["div"], "onClick$">;
 
 export const Flag = component$(({ class: classes, ...props }: FlagProps) => {
   const columns = [...new Array(NUM_COLUMNS).keys()];
