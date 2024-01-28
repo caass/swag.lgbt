@@ -1,10 +1,14 @@
 import { type CookieOptions } from "@builder.io/qwik-city";
 
 // ripped from https://github.com/BuilderIO/qwik/blob/main/packages/qwik-city/middleware/request-handler/cookie.ts#L17
+
 const SAMESITE = {
   lax: "Lax",
+  Lax: "Lax",
+  None: "None",
   none: "None",
   strict: "Strict",
+  Strict: "Strict",
 } as const;
 
 const UNIT = {
@@ -68,13 +72,13 @@ export const setCookie =
       typeof value === "string"
         ? value
         : typeof value === "number"
-        ? value.toString()
-        : JSON.stringify(value);
+          ? value.toString()
+          : JSON.stringify(value);
 
     document.cookie = createSetCookieValue(name, serializedValue, options ?? {});
   };
 
-function resolveSameSite(sameSite: boolean | "strict" | "lax" | "none" | undefined) {
+function resolveSameSite(sameSite: CookieOptions["sameSite"]) {
   if (sameSite === true) {
     return "Strict";
   }
