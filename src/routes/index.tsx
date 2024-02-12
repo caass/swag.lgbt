@@ -13,9 +13,9 @@ export default component$(() => {
       <main>
         <Flag class={styles.flag} cycleOnClick displayAltText />
         <ul class={styles.links}>
-          <li>
+          {/* <li>
             <a href="https://tumblr.swag.lgbt">tumblr</a>
-          </li>
+          </li> */}
           <li>
             <a href="https://github.com/caass/">github</a>
           </li>
