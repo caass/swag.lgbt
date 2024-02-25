@@ -1,8 +1,0 @@
-{
-  "css.lint.unknownAtRules": "ignore",
-  "material-icon-theme.activeIconPack": "qwik",
-  "eslint.options": {
-    "ignorePath": ".gitignore"
-  },
-  "prettier.ignorePath": ".gitignore"
-}
