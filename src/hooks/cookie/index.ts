@@ -1,4 +1,4 @@
-import { type Signal, useSignal, useTask$, useVisibleTask$ } from "@builder.io/qwik";
+import { type Signal, useSignal, useTask$, useOnDocument, $ } from "@builder.io/qwik";
 import { type Loader, type CookieOptions, type RequestEventLoader } from "@builder.io/qwik-city";
 import { isBrowser } from "@builder.io/qwik/build";
 import { parseCookieString, setCookie } from "./util";
@@ -33,10 +33,11 @@ function useCookiePersistence<T extends string | number | Record<string, unknown
 ) {
   const hasInitialized = useSignal(false);
 
-  // we register this first to have it run before the lower task so it can
-  // set the value if it's already in document cookies
-  useVisibleTask$(
-    () => {
+  // we register this first to have it run client-side before the lower task
+  // so it can set the value if it's already in document cookies
+  useOnDocument(
+    "DOMContentLoaded",
+    $(() => {
       const cookies = parseCookieString(document.cookie);
 
       if (name in cookies) {
@@ -54,10 +55,7 @@ function useCookiePersistence<T extends string | number | Record<string, unknown
       }
 
       hasInitialized.value = true;
-    },
-    {
-      strategy: "document-idle",
-    },
+    }),
   );
 
   // this will run before the above task since `useTask$` executes before `useVisibleTask$`
@@ -74,29 +72,59 @@ function useCookiePersistence<T extends string | number | Record<string, unknown
   });
 }
 
+/**
+ * `CookieOptions` with a required `Same-Site` attribute
+ */
+interface SwagCookieOptions extends CookieOptions {
+  sameSite: Required<CookieOptions>["sameSite"];
+}
+
+/**
+ * Set up the scaffolding required to use a cookie with a string payload.
+ *
+ * @param name The name of the cookie
+ * @param defaultValue The default cookie value to use if none is already set
+ * @param options `CookieOptions` to configure the cookie. Defaults to `{ sameSite: "strict", secure: true }`
+ */
 export function cookie<T extends string, PLATFORM = QwikCityPlatform>(
   name: string,
   defaultValue: T,
-  options?: CookieOptions,
+  options?: SwagCookieOptions,
 ): {
-  cookieLoader: (requestEvent: RequestEventLoader<PLATFORM>) => T;
-  createCookieHook(cookieLoader: Loader<T>): () => Signal<T>;
+  /**
+   * Route loader implementation to read and/or set this cookie server-side.
+   *
+   * You'll need to wire this up to a `routeLoader$` in an arrow function
+   * manually since Qwik depends on you exporting loaders from your `layout.tsx`:
+   *
+   * ```ts
+   * // layout.tsx
+   * const myCookie = cookie("my-cookie", "cookie-default-value");
+   * export const useCookieLoader = routeLoader$((event) => myCookie.loaderImpl(event));
+   * ```
+   */
+  loaderImpl: (requestEvent: RequestEventLoader<PLATFORM>) => T;
+
+  /**
+   * Convenience function to create a hook you can use client-side to access this cookie.
+   */
+  createHook(cookieLoader: Loader<T>): () => Signal<T>;
 };
 export function cookie<T extends number, PLATFORM = QwikCityPlatform>(
   name: string,
   defaultValue: T,
-  options?: CookieOptions,
+  options?: SwagCookieOptions,
 ): {
-  cookieLoader: (requestEvent: RequestEventLoader<PLATFORM>) => T;
-  createCookieHook(cookieLoader: Loader<T>): () => Signal<T>;
+  loaderImpl: (requestEvent: RequestEventLoader<PLATFORM>) => T;
+  createHook(cookieLoader: Loader<T>): () => Signal<T>;
 };
 export function cookie<T extends Record<string, unknown>, PLATFORM = QwikCityPlatform>(
   name: string,
   defaultValue: T,
-  options?: CookieOptions,
+  options?: SwagCookieOptions,
 ): {
-  cookieLoader: (requestEvent: RequestEventLoader<PLATFORM>) => T;
-  createCookieHook(cookieLoader: Loader<T>): () => Signal<T>;
+  loaderImpl: (requestEvent: RequestEventLoader<PLATFORM>) => T;
+  createHook(cookieLoader: Loader<T>): () => Signal<T>;
 };
 export function cookie<
   T extends string | number | Record<string, unknown>,
@@ -104,12 +132,16 @@ export function cookie<
 >(
   name: string,
   defaultValue: T,
-  options?: CookieOptions,
+  options: SwagCookieOptions = {
+    sameSite: "strict",
+    secure: true,
+    domain: import.meta.env.PROD ? "swag.lgbt" : undefined,
+  },
 ): {
-  cookieLoader: (requestEvent: RequestEventLoader<PLATFORM>) => T;
-  createCookieHook(cookieLoader: Loader<T>): () => Signal<T>;
+  loaderImpl: (requestEvent: RequestEventLoader<PLATFORM>) => T;
+  createHook(cookieLoader: Loader<T>): () => Signal<T>;
 } {
-  const createCookieHook = (useCookieLoader: Loader<T>) => {
+  const createHook = (useCookieLoader: Loader<T>) => {
     const useCookie = () => {
       const initialValue = useCookieLoader();
       const cookieValue = useSignal(initialValue.value);
@@ -120,10 +152,10 @@ export function cookie<
     return useCookie;
   };
 
-  const cookieLoader = createCookieLoader<T, PLATFORM>(name, defaultValue, options);
+  const loaderImpl = createCookieLoader<T, PLATFORM>(name, defaultValue, options);
 
   return {
-    cookieLoader,
-    createCookieHook,
+    loaderImpl,
+    createHook,
   };
 }

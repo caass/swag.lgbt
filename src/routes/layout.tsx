@@ -19,10 +19,7 @@ export default component$(() => {
   return <Slot />;
 });
 
-const { cookieLoader: flagCookieLoader, createCookieHook: createFlagCookieHook } = cookie<FlagName>(
-  FLAG_CONTEXT_NAME,
-  "progress-pride",
-);
+const flagCookie = cookie(FLAG_CONTEXT_NAME, "progress-pride" as FlagName);
 
-export const useFlagLoader = routeLoader$((event) => flagCookieLoader(event));
-export const useFlagCookie = createFlagCookieHook(useFlagLoader);
+export const useFlagLoader = routeLoader$((event) => flagCookie.loaderImpl(event));
+export const useFlagCookie = flagCookie.createHook(useFlagLoader);
