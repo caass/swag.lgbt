@@ -1,3 +1,8 @@
+/// Barrel file re-exporting different flag implementations.
+///
+/// Flags are all built using [_measurements.scss] and linear gradients,
+/// based on work done [by Josh Comeau](https://www.joshwcomeau.com/animation/pride-flags/).
+
 @forward "lesbian";
 @forward "progress-pride";
 @forward "trans";
