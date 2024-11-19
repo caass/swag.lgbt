@@ -1,0 +1,197 @@
+@import "styles/measurements.css";
+@import "styles/colors.css";
+
+.flag {
+  display: flex;
+  aspect-ratio: 3 / 2;
+}
+
+.column {
+  flex: 1;
+}
+
+.flag.lesbian .column {
+  background: linear-gradient(
+    to bottom,
+    var(--lesbian-stripe-1) 0% var(--one-seventh),
+    var(--lesbian-stripe-2) var(--one-seventh) var(--two-sevenths),
+    var(--lesbian-stripe-3) var(--two-sevenths) var(--three-sevenths),
+    var(--white) var(--three-sevenths) var(--four-sevenths),
+    var(--lesbian-stripe-5) var(--four-sevenths) var(--five-sevenths),
+    var(--lesbian-stripe-6) var(--five-sevenths) var(--six-sevenths),
+    var(--lesbian-stripe-7) var(--six-sevenths) 100%
+  );
+}
+
+.flag.transgender .column {
+  background: linear-gradient(
+    to bottom,
+    var(--trans-blue) 0% var(--one-fifth),
+    var(--trans-pink) var(--one-fifth) var(--two-fifths),
+    var(--white) var(--two-fifths) var(--three-fifths),
+    var(--trans-pink) var(--three-fifths) var(--four-fifths),
+    var(--trans-blue) var(--four-fifths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(1) {
+  background: linear-gradient(
+    to bottom,
+    var(--white) 0% var(--one-twelfth),
+    var(--intersex-yellow) var(--one-twelfth) var(--five-twelfths),
+    var(--intersex-purple) var(--five-twelfths) var(--seven-twelfths),
+    var(--intersex-yellow) var(--seven-twelfths) var(--eleven-twelfths),
+    var(--white) var(--eleven-twelfths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(2) {
+  background: linear-gradient(
+    to bottom,
+    var(--trans-pink) 0% var(--one-twelfth),
+    var(--white) var(--one-twelfth) var(--one-sixth),
+    var(--intersex-yellow) var(--one-sixth) var(--one-third),
+    var(--intersex-purple) var(--one-third) var(--five-twelfths),
+    var(--intersex-yellow) var(--five-twelfths) var(--seven-twelfths),
+    var(--intersex-purple) var(--seven-twelfths) var(--two-thirds),
+    var(--intersex-yellow) var(--two-thirds) var(--five-sixths),
+    var(--white) var(--five-sixths) var(--eleven-twelfths),
+    var(--trans-pink) var(--eleven-twelfths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(3) {
+  background: linear-gradient(
+    to bottom,
+    var(--trans-blue) 0% var(--one-twelfth),
+    var(--trans-pink) var(--one-twelfth) var(--one-sixth),
+    var(--white) var(--one-sixth) var(--one-fourth),
+    var(--intersex-yellow) var(--one-fourth) var(--one-third),
+    var(--intersex-purple) var(--one-third) var(--five-twelfths),
+    var(--intersex-yellow) var(--five-twelfths) var(--seven-twelfths),
+    var(--intersex-purple) var(--seven-twelfths) var(--two-thirds),
+    var(--intersex-yellow) var(--two-thirds) var(--three-fourths),
+    var(--white) var(--three-fourths) var(--five-sixths),
+    var(--trans-pink) var(--five-sixths) var(--eleven-twelfths),
+    var(--trans-blue) var(--eleven-twelfths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(4) {
+  background: linear-gradient(
+    to bottom,
+    var(--poc-brown) 0% var(--one-twelfth),
+    var(--trans-blue) var(--one-twelfth) var(--one-sixth),
+    var(--trans-pink) var(--one-sixth) var(--one-fourth),
+    var(--white) var(--one-fourth) var(--one-third),
+    var(--intersex-yellow) var(--one-third) var(--five-twelfths),
+    var(--intersex-purple) var(--five-twelfths) var(--seven-twelfths),
+    var(--intersex-yellow) var(--seven-twelfths) var(--two-thirds),
+    var(--white) var(--two-thirds) var(--three-fourths),
+    var(--trans-pink) var(--three-fourths) var(--five-sixths),
+    var(--trans-blue) var(--five-sixths) var(--eleven-twelfths),
+    var(--poc-brown) var(--eleven-twelfths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(5) {
+  background: linear-gradient(
+    to bottom,
+    var(--poc-black) 0% var(--one-twelfth),
+    var(--poc-brown) var(--one-twelfth) var(--one-sixth),
+    var(--trans-blue) var(--one-sixth) var(--one-fourth),
+    var(--trans-pink) var(--one-fourth) var(--one-third),
+    var(--white) var(--one-third) var(--five-twelfths),
+    var(--intersex-yellow) var(--five-twelfths) var(--seven-twelfths),
+    var(--white) var(--seven-twelfths) var(--two-thirds),
+    var(--trans-pink) var(--two-thirds) var(--three-fourths),
+    var(--trans-blue) var(--three-fourths) var(--five-sixths),
+    var(--poc-brown) var(--five-sixths) var(--eleven-twelfths),
+    var(--poc-black) var(--eleven-twelfths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(6) {
+  background: linear-gradient(
+    to bottom,
+    var(--rainbow-red) 0% var(--one-twelfth),
+    var(--poc-black) var(--one-twelfth) var(--one-sixth),
+    var(--poc-brown) var(--one-sixth) var(--one-fourth),
+    var(--trans-blue) var(--one-fourth) var(--one-third),
+    var(--trans-pink) var(--one-third) var(--five-twelfths),
+    var(--white) var(--five-twelfths) var(--seven-twelfths),
+    var(--trans-pink) var(--seven-twelfths) var(--two-thirds),
+    var(--trans-blue) var(--two-thirds) var(--three-fourths),
+    var(--poc-brown) var(--three-fourths) var(--five-sixths),
+    var(--poc-black) var(--five-sixths) var(--eleven-twelfths),
+    var(--rainbow-purple) var(--eleven-twelfths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(7) {
+  background: linear-gradient(
+    to bottom,
+    var(--rainbow-red) 0% var(--one-sixth),
+    var(--poc-black) var(--one-sixth) var(--one-fourth),
+    var(--poc-brown) var(--one-fourth) var(--one-third),
+    var(--trans-blue) var(--one-third) var(--five-twelfths),
+    var(--trans-pink) var(--five-twelfths) var(--seven-twelfths),
+    var(--trans-blue) var(--seven-twelfths) var(--two-thirds),
+    var(--poc-brown) var(--two-thirds) var(--three-fourths),
+    var(--poc-black) var(--three-fourths) var(--five-sixths),
+    var(--rainbow-purple) var(--five-sixths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(8) {
+  background: linear-gradient(
+    to bottom,
+    var(--rainbow-red) 0% var(--one-sixth),
+    var(--rainbow-orange) var(--one-sixth) var(--one-fourth),
+    var(--poc-black) var(--one-fourth) var(--one-third),
+    var(--poc-brown) var(--one-third) var(--five-twelfths),
+    var(--trans-blue) var(--five-twelfths) var(--seven-twelfths),
+    var(--poc-brown) var(--seven-twelfths) var(--two-thirds),
+    var(--poc-black) var(--two-thirds) var(--three-fourths),
+    var(--rainbow-blue) var(--three-fourths) var(--five-sixths),
+    var(--rainbow-purple) var(--five-sixths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(9) {
+  background: linear-gradient(
+    to bottom,
+    var(--rainbow-red) 0% var(--one-sixth),
+    var(--rainbow-orange) var(--one-sixth) var(--one-third),
+    var(--poc-black) var(--one-third) var(--five-twelfths),
+    var(--poc-brown) var(--five-twelfths) var(--seven-twelfths),
+    var(--poc-black) var(--seven-twelfths) var(--two-thirds),
+    var(--rainbow-blue) var(--two-thirds) var(--five-sixths),
+    var(--rainbow-purple) var(--five-sixths) 100%
+  );
+}
+
+.flag.progress-pride .column:nth-of-type(10) {
+  background: linear-gradient(
+    to bottom,
+    var(--rainbow-red) 0% var(--one-sixth),
+    var(--rainbow-orange) var(--one-sixth) var(--one-third),
+    var(--rainbow-yellow) var(--one-third) var(--five-twelfths),
+    var(--poc-black) var(--five-twelfths) var(--seven-twelfths),
+    var(--rainbow-green) var(--seven-twelfths) var(--two-thirds),
+    var(--rainbow-blue) var(--two-thirds) var(--five-sixths),
+    var(--rainbow-purple) var(--five-sixths) 100%
+  );
+}
+
+.flag.progress-pride .column {
+  background: linear-gradient(
+    to bottom,
+    var(--rainbow-red) 0% var(--one-sixth),
+    var(--rainbow-orange) var(--one-sixth) var(--one-third),
+    var(--rainbow-yellow) var(--one-third) var(--one-half),
+    var(--rainbow-green) var(--one-half) var(--two-thirds),
+    var(--rainbow-blue) var(--two-thirds) var(--five-sixths),
+    var(--rainbow-purple) var(--five-sixths) 100%
+  );
+}

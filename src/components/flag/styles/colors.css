@@ -1,0 +1,125 @@
+/** Colors for various pride flags */
+
+@property --white {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ffffff;
+}
+
+/** Lesbian */
+
+@property --lesbian-stripe-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #d62900;
+}
+
+@property --lesbian-stripe-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f07722;
+}
+
+@property --lesbian-stripe-3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ff9b55;
+}
+
+@property --lesbian-stripe-5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #d262a6;
+}
+
+@property --lesbian-stripe-6 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #b75591;
+}
+
+@property --lesbian-stripe-7 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #a50062;
+}
+
+/** Transgender */
+
+@property --trans-blue {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #5bcefa;
+}
+
+@property --trans-pink {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f5a9b8;
+}
+
+/** Intersex */
+
+@property --intersex-yellow {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #fdd817;
+}
+
+@property --intersex-purple {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #66338b;
+}
+
+/** People of Color */
+
+@property --poc-brown {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #945516;
+}
+
+@property --poc-black {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #000000;
+}
+
+/** Rainbow */
+
+@property --rainbow-red {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #e22016;
+}
+
+@property --rainbow-purple {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #6d2380;
+}
+
+@property --rainbow-orange {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f28917;
+}
+
+@property --rainbow-blue {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #2c58a4;
+}
+
+@property --rainbow-yellow {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #efe524;
+}
+
+@property --rainbow-green {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #78b82a;
+}
