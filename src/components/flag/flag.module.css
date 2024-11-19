@@ -1,5 +1,6 @@
 @import "styles/measurements.css";
 @import "styles/colors.css";
+@import "styles/animation.css";
 
 .flag {
   display: flex;
@@ -8,6 +9,87 @@
 
 .column {
   flex: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .column {
+    animation: oscillate var(--animation-duration) infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
+  }
+
+  .column:nth-of-type(1) {
+    animation-delay: calc(-17 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(2) {
+    animation-delay: calc(-16 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(3) {
+    animation-delay: calc(-15 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(4) {
+    animation-delay: calc(-14 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(5) {
+    animation-delay: calc(-13 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(6) {
+    animation-delay: calc(-12 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(7) {
+    animation-delay: calc(-11 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(8) {
+    animation-delay: calc(-10 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(9) {
+    animation-delay: calc(-9 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(10) {
+    animation-delay: calc(-8 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(11) {
+    animation-delay: calc(-7 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(12) {
+    animation-delay: calc(-6 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(13) {
+    animation-delay: calc(-5 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(14) {
+    animation-delay: calc(-4 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(15) {
+    animation-delay: calc(-3 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(16) {
+    animation-delay: calc(-2 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(17) {
+    animation-delay: calc(-1 * var(--animation-delay));
+  }
+
+  .column:nth-of-type(18) {
+    animation-delay: 0;
+  }
 }
 
 .flag.lesbian .column {

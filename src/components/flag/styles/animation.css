@@ -1,0 +1,27 @@
+@property --animation-duration {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 500ms;
+}
+
+@property --animation-delay {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 100ms;
+}
+
+@property --wave-height {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 3%;
+}
+
+@keyframes oscillate {
+  from {
+    transform: translateY(var(--wave-height));
+  }
+
+  to {
+    transform: translateY(calc(-1 * var(--wave-height)));
+  }
+}
