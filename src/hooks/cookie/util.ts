@@ -1,6 +1,6 @@
 import { type CookieOptions } from "@builder.io/qwik-city";
 
-// ripped from https://github.com/BuilderIO/qwik/blob/main/packages/qwik-city/middleware/request-handler/cookie.ts#L17
+// ripped from https://github.com/QwikDev/qwik/blob/main/packages/qwik-city/src/middleware/request-handler/cookie.ts
 
 const SAMESITE = {
   lax: "Lax",

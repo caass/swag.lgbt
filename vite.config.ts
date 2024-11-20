@@ -2,10 +2,13 @@
  * This is the base config for vite.
  * When building, the adapter config is used which loads this file and extends it.
  */
+import process from "node:process";
+
 import { defineConfig, type UserConfig } from "vite";
 import { qwikVite } from "@builder.io/qwik/optimizer";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+
 import pkg from "./package.json";
 
 type PkgDep = Record<string, string>;
@@ -21,6 +24,9 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
  */
 export default defineConfig(({ command, mode }): UserConfig => {
   return {
+    define: {
+      __APP_URL__: getCloudflarePagesMetadata()?.CF_PAGES_URL,
+    },
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
@@ -103,4 +109,42 @@ function errorOnDuplicatesPkgDeps(
   if (duplicateDeps.length > 0) {
     throw new Error(msg);
   }
+}
+
+function getCloudflarePagesMetadata() {
+  const CF_PAGES = process.env.CF_PAGES;
+
+  switch (CF_PAGES) {
+    case undefined: {
+      return;
+    }
+
+    case "1": {
+      break;
+    }
+
+    default: {
+      throw new Error(`Unexpected value for CF_PAGES: "${CF_PAGES}"`);
+    }
+  }
+
+  const { CF_PAGES_COMMIT_SHA, CF_PAGES_BRANCH, CF_PAGES_URL } = process.env;
+  if (
+    typeof CF_PAGES_COMMIT_SHA !== "string" ||
+    CF_PAGES_COMMIT_SHA.length === 0
+  ) {
+    throw new Error("CF_PAGES is set, but CF_PAGES_COMMIT_SHA is not.");
+  }
+  if (typeof CF_PAGES_BRANCH !== "string" || CF_PAGES_BRANCH.length === 0) {
+    throw new Error("CF_PAGES is set, but CF_PAGES_BRANCH is not.");
+  }
+  if (typeof CF_PAGES_URL !== "string" || CF_PAGES_URL.length === 0) {
+    throw new Error("CF_PAGES is set, but CF_PAGES_URL is not.");
+  }
+
+  return {
+    CF_PAGES_COMMIT_SHA,
+    CF_PAGES_BRANCH,
+    CF_PAGES_URL,
+  };
 }
