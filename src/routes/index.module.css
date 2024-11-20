@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.home > h1 {
+.home h1 {
   margin-bottom: 1rem;
   text-align: center;
   font-size: 5rem;
