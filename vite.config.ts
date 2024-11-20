@@ -25,7 +25,7 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
 export default defineConfig(({ command, mode }): UserConfig => {
   return {
     define: {
-      __APP_URL__: getCloudflarePagesMetadata()?.CF_PAGES_URL,
+      __APP_URL__: JSON.stringify(getCloudflarePagesMetadata()?.CF_PAGES_URL),
     },
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
     // This tells Vite which dependencies to pre-build in dev mode.
