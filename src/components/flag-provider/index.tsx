@@ -5,7 +5,7 @@ import {
   Slot,
   createContextId,
 } from "@builder.io/qwik";
-import { type FlagName } from "~/components/flag/flag";
+import { type FlagName } from "~/components/flag";
 import { useFlagCookie } from "~/routes/layout";
 
 export const FLAG_CONTEXT_NAME = "lgbt.swag.flag-kind";

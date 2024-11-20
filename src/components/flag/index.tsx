@@ -8,7 +8,7 @@ import {
 } from "@builder.io/qwik";
 
 import styles from "./flag.module.css";
-import { FlagContext } from "../flag-provider/flag-provider";
+import { FlagContext } from "../flag-provider";
 
 const FLAGS = {
   progressPride: {
