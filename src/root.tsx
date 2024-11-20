@@ -4,11 +4,14 @@ import {
   RouterOutlet,
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
-import { RouterHead } from "./components/router-head";
 import { isDev } from "@builder.io/qwik/build";
 
+import { RouterHead } from "~/components/router-head";
+import { FlagProvider } from "~/components/flag-provider";
+
+import "@fontsource/vt323/latin-400.css";
+
 import "./global.css";
-import { FlagProvider } from "./components/flag-provider";
 
 export default component$(() => {
   /**

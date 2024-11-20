@@ -1,22 +1,20 @@
-import { component$, useContext } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { FlagContext } from "~/components/flag-provider";
 
-import { Flag, cycleFlags } from "~/components/flag";
+import { Flag } from "~/components/flag";
+
+import styles from "./index.module.css";
 
 export default component$(() => {
-  const flag = useContext(FlagContext);
-
   return (
-    <>
-      <h1>Hi 👋</h1>
-      <Flag onClick$={() => cycleFlags(flag)} displayAltText />
-      <div>
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
-      </div>
-    </>
+    <div class={styles.home}>
+      <header>
+        <h1>Welcome to swag dot lgbt</h1>
+      </header>
+      <main>
+        <Flag class={styles.flag} cycleOnClick displayAltText />
+      </main>
+    </div>
   );
 });
 

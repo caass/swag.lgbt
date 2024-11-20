@@ -2,8 +2,8 @@ import {
   type PropsOf,
   component$,
   useStylesScoped$,
-  type Signal,
   useContext,
+  $,
 } from "@builder.io/qwik";
 
 import styles from "./flag.module.css";
@@ -29,27 +29,20 @@ const FLAGS = {
 
 export type FlagName = keyof typeof FLAGS;
 
-export type FlagProps = { displayAltText?: boolean } & PropsOf<"div">;
-
-export const cycleFlags = async (flag: Signal<FlagName>) => {
-  switch (flag.value) {
-    case "progressPride": {
-      flag.value = "transgender";
-      break;
-    }
-    case "transgender": {
-      flag.value = "lesbian";
-      break;
-    }
-    case "lesbian": {
-      flag.value = "progressPride";
-      break;
-    }
-  }
-};
+export type FlagProps = {
+  displayAltText?: boolean;
+  cycleOnClick?: boolean;
+} & PropsOf<"div">;
 
 export const Flag = component$(
-  ({ displayAltText = false, class: classes, title, ...props }: FlagProps) => {
+  ({
+    displayAltText = false,
+    cycleOnClick = false,
+    class: classes,
+    title,
+    onClick$,
+    ...props
+  }: FlagProps) => {
     const currentFlag = useContext(FlagContext);
 
     useStylesScoped$(".pointer { cursor: pointer; }");
@@ -60,11 +53,32 @@ export const Flag = component$(
         class={[
           styles.flag,
           FLAGS[currentFlag.value].cssClass,
-          { pointer: props.onClick$ !== undefined },
+          { pointer: cycleOnClick },
           `${classes}`,
         ]}
+        onClick$={
+          cycleOnClick
+            ? $(() => {
+                switch (currentFlag.value) {
+                  case "progressPride": {
+                    currentFlag.value = "transgender";
+                    break;
+                  }
+                  case "transgender": {
+                    currentFlag.value = "lesbian";
+                    break;
+                  }
+                  case "lesbian": {
+                    currentFlag.value = "progressPride";
+                    break;
+                  }
+                }
+              })
+            : onClick$
+        }
         {...props}
       >
+        {/* 18 columns */}
         <span class={styles.column} />
         <span class={styles.column} />
         <span class={styles.column} />
