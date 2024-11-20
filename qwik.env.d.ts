@@ -3,4 +3,4 @@
 // Add global `vite/client` types. For more info, see: https://vitejs.dev/guide/features#client-types
 /// <reference types="vite/client" />
 
-declare const __APP_URL__: string;
+declare const __COOKIE_DOMAIN__: string;

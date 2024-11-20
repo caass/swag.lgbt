@@ -146,7 +146,7 @@ export function cookie<
   options: SwagCookieOptions = {
     sameSite: "strict",
     secure: true,
-    domain: __APP_URL__,
+    domain: __COOKIE_DOMAIN__,
   },
 ): {
   loaderImpl: (requestEvent: RequestEventLoader<PLATFORM>) => T;

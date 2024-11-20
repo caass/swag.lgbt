@@ -23,9 +23,14 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
  * Note that Vite normally starts from `index.html` but the qwikCity plugin makes start at `src/entry.ssr.tsx` instead.
  */
 export default defineConfig(({ command, mode }): UserConfig => {
+  const pagesMeta = getCloudflarePagesMetadata();
+
   return {
     define: {
-      __APP_URL__: JSON.stringify(getCloudflarePagesMetadata()?.CF_PAGES_URL),
+      __COOKIE_DOMAIN__:
+        pagesMeta?.CF_PAGES_URL !== undefined
+          ? new URL(pagesMeta.CF_PAGES_URL).host
+          : undefined,
     },
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
     // This tells Vite which dependencies to pre-build in dev mode.
@@ -147,4 +152,9 @@ function getCloudflarePagesMetadata() {
     CF_PAGES_BRANCH,
     CF_PAGES_URL,
   };
+}
+
+function makeCookieDomain(appUrl: string): string {
+  const url = new URL(appUrl);
+  return url.host;
 }
