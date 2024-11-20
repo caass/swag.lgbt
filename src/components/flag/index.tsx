@@ -2,7 +2,6 @@ import {
   type PropsOf,
   component$,
   useStylesScoped$,
-  type QRLEventHandlerMulti,
   type Signal,
   useContext,
 } from "@builder.io/qwik";
@@ -30,10 +29,7 @@ const FLAGS = {
 
 export type FlagName = keyof typeof FLAGS;
 
-export type FlagProps = {
-  displayAltText?: boolean;
-  onClick$?: QRLEventHandlerMulti<PointerEvent, HTMLDivElement>;
-} & Omit<PropsOf<"div">, "onClick$">;
+export type FlagProps = { displayAltText?: boolean } & PropsOf<"div">;
 
 export const cycleFlags = async (flag: Signal<FlagName>) => {
   switch (flag.value) {
