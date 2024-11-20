@@ -24,13 +24,14 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
  */
 export default defineConfig(({ command, mode }): UserConfig => {
   const pagesMeta = getCloudflarePagesMetadata();
+  const pagesUrl =
+    pagesMeta?.CF_PAGES_URL !== undefined
+      ? new URL(pagesMeta.CF_PAGES_URL)
+      : undefined;
 
   return {
     define: {
-      __COOKIE_DOMAIN__:
-        pagesMeta?.CF_PAGES_URL !== undefined
-          ? new URL(pagesMeta.CF_PAGES_URL).host
-          : undefined,
+      __COOKIE_DOMAIN__: JSON.stringify(pagesUrl?.host),
     },
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
     // This tells Vite which dependencies to pre-build in dev mode.
